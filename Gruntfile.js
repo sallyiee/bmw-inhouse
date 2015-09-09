@@ -19,7 +19,7 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
-  grunt.registerTask('deploy', ['buildcontrol']);
+  grunt.loadNpmTasks('grunt-build-control');
   grunt.initConfig({
     yeoman: yeomanConfig,
     watch: {
