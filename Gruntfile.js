@@ -19,6 +19,7 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  grunt.registerTask('deploy', ['buildcontrol']);
   grunt.initConfig({
     yeoman: yeomanConfig,
     watch: {
@@ -78,17 +79,21 @@ module.exports = function (grunt) {
       }
     },
     clean: {
-      dist: {
-        files: [{
-          dot: true,
-          src: [
-            '.tmp',
-            '<%= yeoman.dist %>/*',
-            '!<%= yeoman.dist %>/.git*'
-          ]
-        }]
-      },
-      server: '.tmp'
+        dist: {
+            files: [{
+                dot: true,
+                src: [
+                    '.tmp',
+                    '<%= yeoman.dist %>/*',
+                    '!<%= yeoman.dist %>/.git{,*/}*',
+                    '!<%= yeoman.dist %>/Procfile',
+                    '!<%= yeoman.dist %>/package.json',
+                    '!<%= yeoman.dist %>/web.js',
+                    '!<%= yeoman.dist %>/node_modules'
+               ]
+            }]
+        },
+        server: '.tmp'
     },
     jshint: {
       options: {
