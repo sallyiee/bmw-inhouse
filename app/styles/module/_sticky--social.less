@@ -1,0 +1,55 @@
+.sticky--social{
+	background-color: @black;
+	max-width: 210px;
+	width: 100%;
+	z-index: 1;
+
+	position: fixed;
+	top: 0;
+	right: 0;
+
+	li{
+		font-size: 12px; 
+		line-height: 1.2;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		text-align: center;
+
+		display: inline-block;
+		width: 32%;
+		padding: 15px;
+		box-sizing: border-box;
+
+		vertical-align: middle;
+
+		&:first-of-type{
+			text-align: right;
+		}
+		a{
+			color: @white;
+			display: table;
+		    width: 40px;
+		    height: 40px;
+		    background-color: @white;
+		    border-radius: 50%;
+		    font-weight: normal;
+		}
+		&.label{
+			line-height: 1;
+			a{
+				width: auto;
+				height: auto;
+				border-radius: 0;
+				background-color: transparent;		
+				white-space: pre-line;	
+			}
+		}
+	}
+
+	i{
+		font-size: 20px;
+		color: @black;
+		display: table-cell;
+		vertical-align: middle;
+	}
+}

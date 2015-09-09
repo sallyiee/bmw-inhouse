@@ -1,0 +1,42 @@
+.unstyled{
+	padding: 0;
+	margin: 0;
+	li{
+		list-style: none;
+	}
+}
+
+body{
+	font-family: @sofia;
+	font-size: 14px; 
+	position: relative;
+	@media screen and (min-width: 700px){
+		font-size: 16px;
+	}
+}
+
+section{
+	padding: @section-seperator 0 0;  
+}
+
+.center-text{
+	text-align: center;
+}
+
+.container{
+	overflow: hidden;
+}
+
+.hide-on-desktop{
+	display: block;
+	@media screen and (min-width: 1000px){
+		display: none;
+	}
+}
+
+.hide-on-mobile{
+	display: none;
+	@media screen and (min-width: 1000px){
+		display: block;
+	}
+}

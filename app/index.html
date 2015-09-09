@@ -1,0 +1,270 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <script src="http://use.typekit.net/isr6tyw.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body ng-app="bmw">
+    <nav>
+      <div class="sticky--social">
+      <ul class="unstyled">
+        <li class="label"><a href="#">Share this page</a></li>
+        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+      </ul>  
+      </div>
+      <ul class="unstyled nav--main">
+        <li class="logo"> <a href="#"><img src="images/logo.png" alt=""></a></li>
+      </ul>
+    </nav>
+    <header class="main-header">
+      <video autoplay  poster="images/BMW-hero.png" id="bgvid">
+          <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
+        <source src="/videos/BMW-video.mp4" type="video/mp4">
+      </video>
+      <div class="header__content">
+        <h2>THE BMW</h2>
+        <h1>Mission <br>to Drive</h1>
+        <p class="paragraph--large spacing-5">Build your ultimate power broker</p>
+        <a href="#" class="btn btn--red next-link">Hello Future</a>
+      </div>
+      <div class="overlay"></div>
+    </header>
+    <main ng-controller="mainController">
+     <section>
+       <div class="">
+       <header class="center-text spacing5">
+         <h2>The BMW </h2>
+         <h1 class="spacing-5 red">Mission<br> to Drive</h1>
+         <p class="paragraph--large">
+           Build your ultimate power broker.
+         </p>
+         <div class="car__intro">
+           <img src="images/main-car.png" alt="">
+         </div>
+       </header>
+      <div class="car__configuration">
+      <div class="clearfix" >
+        <div class="col-md-3 col-xs-6" ng-repeat="car in cars">
+          <figure>
+              <a href="#"><img src="images/configure/{{car.modelUrl}}.png" alt="6 Series"></a>
+              <figcaption>
+                <div>
+                  <label for="{{car.name}}" class="car__configuration--name"><span></span>{{car.name}}</label>
+                  <label for="{{car.name}}" class="car__configuration--price"><span></span>${{car.price}} MSRP</label>
+                  <input type="radio" id="{{car.modelUrl}}" name="radio" value="{{car.modelUrl}}"  ng-click="selectCar(car)"  />
+                </div>
+              </figcaption> 
+          </figure>
+        </div>
+        </div>
+              <a href="#car__colours" class="btn btn--red" ng-click='showElement = !showElement; elementInitialized = true;'>Configurate</a>
+      </div>
+       </div>
+     </section>
+     <div ng-init="carColour='protonic-blue-metallic'" ng-if='elementInitialized' ng-show='showElement' >
+     <section class="car__colours__wrapper" id="car__colours" >
+       <div class="car__colours">
+          <div class="car__colours__content">
+          <header class="center-text spacing5">
+          <p class="paragraph--large spacing-5">
+             Make a bold entrance
+           </p>
+           <h1 class="spacing-5"> crafted to <br> exude style </h1>
+           <div class="car__colour--image">
+
+           <picture>
+              <source srcset="images/colours/{{carColour}}.png" media="(max-width: 768px)">
+              <source srcset="images/colours/{{carColour}}.png">
+              <img src="images/colours/{{carColour}}.png" alt="">
+          </picture>
+
+           </div>
+         </header>
+       </div> 
+       <div class="clearfix" >
+           <div class="col-xs-3 {{colourName.name}} car__colour--selection" ng-repeat="colourName in selectedCar.colour">
+                <div class="content">
+                  <label for="{{colourName.name}}"><span >
+                    {{colourName.longname}}
+                  </span></label>
+                  <input type="radio" id="{{colourName.name}}l" name="option-car" value="{{colourName.name}}" ng-model="$parent.carColour"/>
+                </div>
+           </div>
+           </div>
+          </div>
+          <div class="car__colour--btn">
+            <a href="#car__interior" class="btn btn--blue">next step</a>
+           </div>
+     </section>
+     <section class="car__interior" id="car__interior">
+       <header class="car__interior--header">
+         <div class="container">
+              <div class="header-content">
+               <p class="paragraph--large">Obsess over comfort</p>
+               <h1>Feel at home, <br> on the road</h1>
+             </div>
+         </div>
+       </header>
+       <div class="car__interior--selection clearfix">
+            <div class="col-xs-3 car__colours {{interior.name}}" ng-repeat="interior in selectedCar.interior">
+                <div class="content">
+                <label for="iconic-silver-metallic"><span></span>{{interior.longname}}</label>
+                <input type="radio" id="{{interior.name}}" name="interior" value="{{interior.name}}" ng-model="$parent.carInterior"/>
+                </div>
+            </div>
+            <div class="car__colour--btn">
+              <a href="#car__accessories" class="btn btn--blue">next step</a>
+           </div>
+        </div> 
+      </section>
+      <section class="car__accessories" id="car__accessories">
+        <header class="spacing-5">
+         <div class="container">
+              <div class="header-content">
+               <p class="paragraph--large">Heighten every moment</p>
+               <h1>performance evolved.</h1>
+             </div>
+         </div>
+       </header>
+       <div class="container">
+       <div class="clearfix spacing-5">
+
+          <div class="col-xs-6 col-md-4 car__accesories--list" ng-repeat="accessories in selectedCar.accessories" >
+             <img src="/images/accessories/{{accessories.name}}.png">
+              <div class="car__accesories--description " ng-class="{'button': !isActive, 'button active': isActive}" ng-init="isActive = false" ng-click="isActive = !isActive">
+               <i class="fa fa-plus"></i>
+               <div>
+                  <div class="confirmation">
+                    <div class="tick">
+                    <i class="fa fa-check"></i>
+                    <span>Added</span></div>
+                  </div>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                  <span class="remove">Remove</span>
+               </div>
+             </div>
+           </div>
+
+         </div>
+         <a class="btn btn--blue" href="#car__result">Finish</a>
+       </div>
+      </section>
+      <section class="car__result" id="car__result">
+        <header style="background:url('/images/result/{{selectedCar.name}}/{{carColour}}.jpg') no-repeat top center; background-size: contain;" class="hide-on-mobile">
+          <div class="container">
+              <div class="header-content">
+               <p class="paragraph--large">Your ultimate power broker.</p>
+               <h1>your mission <br>to drive</h1>
+             </div>
+         </div>
+        </header>
+         <header style="background:url('/images/result/{{selectedCar.name}}/mobile/{{carColour}}.jpg') no-repeat; background-size: contain;" class="hide-on-desktop">
+          <div class="container">
+              <div class="header-content">
+               <p class="paragraph--large">Your ultimate power broker.</p>
+               <h1>your mission <br>to drive</h1>
+             </div>
+         </div>
+        </header>
+        <div class="contents">
+          <h2>your bmw {{selectedCar.name}} series</h2>
+          <!-- <p>Color: {{carColour}} | Interior setting: {{carInterior}} </p> -->
+          <h3 class="spacing-5">${{selectedCar.price}}</h3>
+          <div >
+            <button href="#" class="btn btn--red" ng-click='showForm = !showForm; formElementInitialized = true' >Book a test</button>
+          </div>
+        </div>
+      </section>
+      <section class="car__test-drive" ng-init="carColour='protonic-blue-metallic'" ng-if='formElementInitialized' ng-show='showForm' >
+      <div class="container">
+        <form action="">
+          <div class="control-group">
+            <input type="date" placeholder="When would you like to book your drive?" ng-model="booking">
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="control-group">
+                <input type="tel" placeholder="Mobile Number" ng-model="phone">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="control-group">
+                <input type="text" placeholder="Nearest Dealership" ng-model="dealer">
+              </div>
+            </div>  
+            <div class="col-md-6">
+              <div class="control-group">
+                <input type="text" placeholder="Full Name" ng-model="name" required>
+              </div>
+            </div>  
+            <div class="col-md-6 spacing-5">
+              <div class="control-group">
+                <input type="email" placeholder="Email address" ng-model="email" required>
+              </div>
+            </div>  
+          </div>
+          <div class="control-group center-text">
+            <button class="btn btn--red">Book Now</button>
+          </div>
+        </form>
+        </div>
+      </section>
+      </div>
+
+    </main>
+      
+
+
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+
+        <!-- build:js scripts/main.js -->
+        <script src="bower_components/jquery/jquery.js"></script>
+        <script src="scripts/main.js"></script>
+        <script src="scripts/hello.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js scripts/vendor/bootstrap.js -->
+        <script src="bower_components/bootstrap/js/affix.js"></script>
+        <script src="bower_components/bootstrap/js/alert.js"></script>
+        <script src="bower_components/bootstrap/js/dropdown.js"></script>
+        <script src="bower_components/bootstrap/js/tooltip.js"></script>
+        <script src="bower_components/bootstrap/js/modal.js"></script>
+        <script src="bower_components/bootstrap/js/transition.js"></script>
+        <script src="bower_components/bootstrap/js/button.js"></script>
+        <script src="bower_components/bootstrap/js/popover.js"></script>
+        <script src="bower_components/bootstrap/js/carousel.js"></script>
+        <script src="bower_components/bootstrap/js/scrollspy.js"></script>
+        <script src="bower_components/bootstrap/js/collapse.js"></script>
+        <script src="bower_components/bootstrap/js/tab.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

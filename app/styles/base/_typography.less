@@ -1,0 +1,35 @@
+h1, h2, h3, h4, p, ul, li, a{
+	font-family: @sofia;
+}
+
+h1, h2, h3{
+	line-height: 1;
+}
+
+h1{
+	font-size: 3.5em; 
+	text-transform: uppercase;
+	font-weight: bold;
+	@media screen and (min-width: @mobile-viewport){
+		font-size: 5.4375em; 
+	}
+}
+
+h2{
+	font-size: 2.5em;
+	text-transform: uppercase;
+	@media screen and (min-width: @mobile-viewport){
+		font-size: 3em;
+	}
+}
+
+.paragraph--large{
+	font-size: 1.5em;
+	@media screen and (min-width: @mobile-viewport){
+		font-size: 2em;
+	}
+}
+
+.red{
+	color: @red !important;
+}
