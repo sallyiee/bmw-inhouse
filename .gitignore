@@ -24,3 +24,6 @@ Thumbs.db
 node_modules
 .tmp
 app/bower_components
+
+# Ignore pattern for Production
+node_modules
