@@ -165,7 +165,14 @@ module.exports = function (grunt) {
     useminPrepare: {
       html: '<%= yeoman.app %>/index.html',
       options: {
-        dest: '<%= yeoman.dist %>'
+        dest: '<%= config.dist %>',
+        flow: {
+          steps: {
+            js: ['concat'],
+            css: ['concat']
+          },
+          post: {}
+        }
       }
     },
     usemin: {
@@ -226,6 +233,7 @@ module.exports = function (grunt) {
         }]
       }
     },
+
     copy: {
       dist: {
         files: [{
@@ -297,9 +305,9 @@ module.exports = function (grunt) {
     'copy:server',
     'useminPrepare',
     'concurrent',
-    'cssmin',
+    // 'cssmin',
     'concat',
-    'uglify',
+    // 'uglify',
     'copy',
     'rev',
     'usemin'

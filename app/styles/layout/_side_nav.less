@@ -1,0 +1,41 @@
+#dot-nav{    
+	left: 25px;
+	top: 50%;
+	margin-top: -50px;
+	height: 100px;
+	z-index: 999;
+}
+
+#dot-nav ul {
+	list-style: none;
+	margin:0;
+	padding: 0;
+}
+#dot-nav li {
+	position: relative;
+	background-color: #000;
+	border:1px solid #000;
+	border-radius: 15px 15px 15px 15px;
+	cursor: pointer;
+	padding: 5px;
+	height: 10px;
+	margin: 10px 10px 0px 0px;
+	width: 10px;
+	vertical-align:bottom;
+}
+#dot-nav li.active, #dot-nav li:hover {
+	// box-shadow: inset 0 0 0 -1px #40a2d2;
+	box-shadow:
+    inset 0 0 0 1px #40a2d2;
+    border: 3px solid #40a2d2;
+    margin-left: -2px;
+
+}
+
+#dot-nav a {
+	outline: 0;
+	vertical-align:top;
+	margin: 0px 0px 0px 25px;
+	position: relative;
+	top:-5px;
+}

@@ -6117,6 +6117,51 @@ video {
 .nav--main .logo img {
   width: 50%;
 }
+#dot-nav {
+  display: none;
+}
+@media screen and (min-width: 700px) {
+  #dot-nav {
+    display: block;
+  }
+}
+#dot-nav {
+  left: 25px;
+  top: 50%;
+  margin-top: -50px;
+  height: 100px;
+  z-index: 999;
+}
+#dot-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#dot-nav li {
+  position: relative;
+  background-color: #000;
+  border: 1px solid #000;
+  border-radius: 15px 15px 15px 15px;
+  cursor: pointer;
+  padding: 5px;
+  height: 10px;
+  margin: 10px 10px 0px 0px;
+  width: 10px;
+  vertical-align: bottom;
+}
+#dot-nav li.active,
+#dot-nav li:hover {
+  box-shadow: inset 0 0 0 1px #40a2d2;
+  border: 3px solid #40a2d2;
+  margin-left: -2px;
+}
+#dot-nav a {
+  outline: 0;
+  vertical-align: top;
+  margin: 0px 0px 0px 25px;
+  position: relative;
+  top: -5px;
+}
 .btn {
   padding: 15px 0;
   max-width: 300px;
@@ -6238,6 +6283,7 @@ video {
 .car__colours label {
   font-size: 18px;
   font-weight: normal;
+  min-height: 60px;
 }
 .car__colours .crystal-white-pearl {
   background-color: #dddddd;
@@ -6392,6 +6438,7 @@ video {
 }
 .car__accesories--list img {
   width: 100%;
+  height: 100%;
 }
 @media screen and (min-width: 700px) {
   .car__accesories--list {
@@ -6399,15 +6446,17 @@ video {
     margin-bottom: 15px;
   }
 }
-.car__accesories--list:hover .car__accesories--description {
-  display: block;
-  padding: 10% 15px;
-  background-color: rgba(64, 162, 210, 0.7);
-  color: #FFF;
-}
-.car__accesories--list:hover .car__accesories--description .fa-plus {
-  margin-bottom: 20px;
-  display: block;
+@media screen and (min-width: 600px) {
+  .car__accesories--list:hover .car__accesories--description {
+    display: block;
+    padding: 10% 15px;
+    background-color: rgba(64, 162, 210, 0.7);
+    color: #FFF;
+  }
+  .car__accesories--list:hover .car__accesories--description .fa-plus {
+    margin-bottom: 20px;
+    display: block;
+  }
 }
 .car__accesories--description {
   display: none;
@@ -6437,21 +6486,50 @@ video {
   width: 80%;
   margin: auto;
 }
-.car__accesories--description.active {
-  height: 100%;
-  display: block;
-  background-color: rgba(0, 0, 0, 0.7) !important;
+@media screen and (min-width: 600px) {
+  .car__accesories--description.active {
+    height: 100%;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+  }
+  .car__accesories--description.active .fa-plus {
+    display: none !important;
+  }
+  .car__accesories--description.active > div {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    color: #FFF;
+  }
+  .car__accesories--description.active .tick {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(64, 162, 210, 0.7);
+    border-radius: 50%;
+    margin-bottom: 60px;
+  }
+  .car__accesories--description.active .tick i {
+    font-size: 18px;
+    line-height: 40px;
+    margin-bottom: 10px;
+  }
+  .car__accesories--description.active .tick span {
+    display: block;
+    margin-left: -5px;
+  }
+  .car__accesories--description.active .remove {
+    margin-top: 40px;
+    display: block;
+  }
+  .car__accesories--description.active .remove a {
+    color: #545458;
+    text-decoration: underline;
+    line-height: 1;
+  }
 }
-.car__accesories--description.active .fa-plus {
-  display: none !important;
-}
-.car__accesories--description.active > div {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #FFF;
-}
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 600px) and screen and (max-width: 600px) {
   .car__accesories--description.active {
     width: 88%;
     box-sizing: content-box;
@@ -6460,51 +6538,25 @@ video {
     display: none;
   }
 }
-@media screen and (max-width: 400px) {
+@media screen and (min-width: 600px) and screen and (max-width: 400px) {
   .car__accesories--description.active {
     width: 85%;
   }
 }
-.car__accesories--description.active .tick {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  background-color: rgba(64, 162, 210, 0.7);
-  border-radius: 50%;
-  margin-bottom: 60px;
-}
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 600px) and screen and (max-width: 600px) {
   .car__accesories--description.active .tick {
     margin-bottom: 0;
   }
 }
-.car__accesories--description.active .tick i {
-  font-size: 18px;
-  line-height: 40px;
-  margin-bottom: 10px;
-}
-.car__accesories--description.active .tick span {
-  display: block;
-  margin-left: -5px;
-}
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 600px) and screen and (max-width: 600px) {
   .car__accesories--description.active .tick span {
     margin-left: 0;
   }
 }
-.car__accesories--description.active .remove {
-  margin-top: 40px;
-  display: block;
-}
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 600px) and screen and (max-width: 600px) {
   .car__accesories--description.active .remove {
     margin-top: 20px;
   }
-}
-.car__accesories--description.active .remove a {
-  color: #545458;
-  text-decoration: underline;
-  line-height: 1;
 }
 .car__result {
   text-align: center;
@@ -6530,11 +6582,11 @@ video {
     padding-top: 4em;
   }
 }
-@media screen and (min-width: 700px) and (max-width: 1200px) {
+@media screen and (min-width: 700px) and (max-width: 1500px) {
   .car__result header {
     background-size: cover !important;
     min-height: auto;
-    height: 700px;
+    height: 800px;
   }
 }
 .car__result header .car {
@@ -6563,7 +6615,7 @@ video {
   padding-top: 0;
   padding-bottom: 8em;
 }
-@media screen and (min-width: 1200px) and (max-width: 1550px) {
+@media screen and (min-width: 1200px) and (max-width: 1000px) {
   .car__result .contents {
     margin-top: -200px;
   }

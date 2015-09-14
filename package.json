@@ -4,7 +4,9 @@
   "dependencies": {
     "express": "^4.13.3",
     "grunt-build-control": "^0.6.0",
-    "gzippo": "^0.2.0"
+    "grunt-usemin": "^3.1.1",
+    "gzippo": "^0.2.0",
+    "webapp": "0.0.2"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
@@ -33,5 +35,23 @@
   },
   "engines": {
     "node": ">=0.8.0"
-  }
+  },
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sallyiee/bmw-inhouse.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sallyiee/bmw-inhouse/issues"
+  },
+  "homepage": "https://github.com/sallyiee/bmw-inhouse#readme",
+  "description": ""
 }
