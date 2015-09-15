@@ -165,14 +165,7 @@ module.exports = function (grunt) {
     useminPrepare: {
       html: '<%= yeoman.app %>/index.html',
       options: {
-        dest: '<%= config.dist %>',
-        flow: {
-          steps: {
-            js: ['concat'],
-            css: ['concat']
-          },
-          post: {}
-        }
+        dest: '<%= yeoman.dist %>'
       }
     },
     usemin: {
@@ -233,7 +226,6 @@ module.exports = function (grunt) {
         }]
       }
     },
-
     copy: {
       dist: {
         files: [{
@@ -268,7 +260,21 @@ module.exports = function (grunt) {
         'svgmin',
         'htmlmin'
       ]
+    },
+    buildcontrol: {
+    options: {
+        dir: 'dist',
+        commit: true,
+        push: true,
+        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+    },
+    heroku: {
+        options: {
+            remote: 'git@heroku.com:bmw-inhouse-app-1.git',
+            branch: 'master'
+        }
     }
+ }
   });
 
   grunt.registerTask('serve', function (target) {
@@ -305,12 +311,13 @@ module.exports = function (grunt) {
     'copy:server',
     'useminPrepare',
     'concurrent',
-    // 'cssmin',
+    'cssmin',
     'concat',
-    // 'uglify',
+    'uglify',
     'copy',
     'rev',
-    'usemin'
+    'usemin',
+    'buildcontrol'
   ]);
 
   grunt.registerTask('default', [
